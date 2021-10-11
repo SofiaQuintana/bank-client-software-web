@@ -1,0 +1,13 @@
+.main-navbar {
+    background-color: #CB1B16;
+}
+
+.left-card {
+    margin-top: 110px;
+    margin-left: 50px;
+    width: 45%;
+}
+
+.right-card {
+    position: relative;
+}
