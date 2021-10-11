@@ -1,0 +1,66 @@
+.form-signin {
+    width: 75%;
+    padding: 75px;
+}
+
+.fg-button {
+    position: relative;
+    left: -123px;
+}
+
+.lbl-pos {
+    position: relative;
+    left: -150px;
+    margin-top: 10px;
+}
+
+.btn-primary {
+    background-color: #CB1B16;
+    border-color: #CB1B16;
+}
+
+.login-callout {
+    padding: 10px 5px;
+    margin-top: 25px;
+    text-align: center;
+    border: 1px solid;
+    border-color: #1368aa;
+    border-radius: 5px;
+    background-color: #1368aa;
+    color: white;
+}
+
+a {
+   color: white; 
+}
+
+.left-card {
+    margin-top: 110px;
+    margin-left: 150px;
+    width: 25%;
+}
+
+.right-card {
+    margin-top: 110px;
+    border: 1px solid;
+    border-radius: 5px;
+    border-color: #1368aa;
+    height: 530px;
+}
+
+.grid-container {
+    display: grid;
+    grid-column-gap: 5px;
+}
+
+.grid-item {
+    grid-area: 1;
+}
+
+.footer {
+    margin-top: 100px;
+    border-top: 1px solid #747474;
+    margin-left: 500px;
+    opacity: 40%;
+    width: 50%;
+}
