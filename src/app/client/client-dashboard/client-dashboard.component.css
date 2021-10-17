@@ -1,0 +1,22 @@
+.sidebar {
+    height: 500px;
+}
+
+.icon-conf {
+    width: 24px;
+    height: 24px;
+}
+
+.nav-link-main {
+    display: block;
+    padding: .5rem 1rem;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: larger;
+    color: #1368aa;
+}
+
+.nav-link {
+    font-size: larger;
+    color: #8e9aaf;
+}
