@@ -34,7 +34,7 @@ export class LogInComponent {
       (response) => { 
         console.log(response) 
         this.serverResponseObject = response;
-        this.loginService.registerLogInData(this.serverResponseObject.user_type);
+        this.loginService.registerLogInData(this.serverResponseObject.user_type, this.serverResponseObject.token, this.serverResponseObject.username);
         this.goToDashboard();
       },
       (error : HttpErrorResponse) => { 

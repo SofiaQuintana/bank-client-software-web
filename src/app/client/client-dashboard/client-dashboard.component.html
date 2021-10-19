@@ -1,0 +1,86 @@
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+                <div class="d-flex flex-column flex-shrink-0 position-sticky pt-3">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link-main active" aria-current="page" href="#">
+                                <img class="feather feather-home icon-conf" src="/assets/img/home-icon.png" aria-hidden="true"/>
+                                Dashboard
+                            </a>
+                        </li>
+                        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                            <span>Solicitudes</span>
+                        </h6>
+                        <li class="nav-item" routerLink="./account" routerLinkActive="true">
+                            <a class="nav-link">
+                                <img class="feather feather-home icon-conf" src="/assets/img/account-log.png" aria-hidden="true"/>
+                                Cuenta bancaria
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <img class="feather feather-home icon-conf" src="/assets/img/credit-card.png" aria-hidden="true"/>
+                                Tarjeta de credito
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <img class="feather feather-home icon-conf" src="/assets/img/debit-card.png" aria-hidden="true"/>
+                                Tarjeta de debito
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <img class="feather feather-home icon-conf" src="/assets/img/loan.png" aria-hidden="true"/>
+                                Prestamo
+                            </a>
+                        </li>
+                    </ul>
+                    <hr>
+                    <div class="dropdown">
+                        <a href="#" class="d-flex align-items-center text-black text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                          <strong>mdo</strong>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
+                          <li><a class="dropdown-item" href="#">New project...</a></li>
+                          <li><a class="dropdown-item" href="#">Settings</a></li>
+                          <li><a class="dropdown-item" href="#">Profile</a></li>
+                          <li><hr class="dropdown-divider"></li>
+                          <li><a class="dropdown-item" href="#">Sign out</a></li>
+                        </ul>
+                      </div>
+                </div>
+            </nav>
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <h1 class="h2">Servicios activos</h1>
+                </div>
+                <div class="main-list">
+                    <div *ngFor="let service of data" class="row service g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                        <div class="col p-4 d-flex flex-column position-static">
+                            <h4 class="d-inline-block mb-2 text"> {{ service.type }}</h4>
+                            <h5 class="d-inline-block mb-2 text text-id"> {{ service.id }}000000000000 </h5>
+                            <div *ngIf="setHiddenValue(service.type)" role="group">
+                                <h5 class="d-inline-block mb-2 text-id"> {{ service.balance}} </h5>
+                                <strong class="d-inline-block mb-2 text text-muted"> /SALDO </strong>
+                            </div>
+                            <div [hidden]="setHiddenValue(service.type)" role="group">
+                                <strong class="d-inline-block mb-2 text-muted"> SALDO NO DISPONIBLE </strong>
+                            </div>
+                            <div class="btn-toolbar mb-2 mb-md-0">
+                                <div class="btn-group me-2">
+                                  <a class="btn btn-lg btn-right btn-outline-secondary" role="button">
+                                      <img class="feather feather-home icon-conf" src="/assets/img/view.png" aria-hidden="true">
+                                  </a>
+                                  <button type="button" class="btn btn-lg text btn-outline-secondary">Estado</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+</body>
