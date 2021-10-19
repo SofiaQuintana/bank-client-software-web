@@ -21,15 +21,16 @@ export class AuthService {
   };
 
   constructor(private cookieService : CookieService, private http : HttpClient) { 
-    cookieService.set('LOGGED', 'false');
   }
 
   sendLoginData(user : User): Observable<any> {
     return this.http.post<User>(this.url+'/login', JSON.stringify(user), this.httpOptions);
   }
 
-  registerLogInData(role : number) {
+  registerLogInData(role : number, token : string, username : string) {
     this.cookieService.set('LOGGED', 'true');
+    this.cookieService.set('TOKEN', token);
+    this.cookieService.set('USERNAME', username);
     this.setRole(role);
   }
 
@@ -47,6 +48,16 @@ export class AuthService {
   getRole() : string {
     const role = this.cookieService.get('ROLE');
     return role;
+  }
+
+  getToken() : string {
+    const token = this.cookieService.get('TOKEN');
+    return token;
+  }
+
+  getUsername() : string {
+    const username = this.cookieService.get('USERNAME');
+    return username;
   }
 
   isLogged() : boolean {
