@@ -1,0 +1,42 @@
+<div class="card">
+    <div class="card-body">
+        <h4 class="mb-3 text-center">Creación de usuario</h4>
+        <form class="needs-validation" [formGroup]="createForm" (ngSubmit)="onSubmit()" novalidate="">
+            <div class="row g-3">
+                <div class="col-10">
+                    <label for="form-label">CUI</label>
+                    <input formControlName="cui" class="form-control" type="text" placeholder="Ingrese CUI" [ngClass]="{ 'is-invalid': submitted && f.cui.errors}">
+                    <div *ngIf="submitted && f.cui.errors" class="invalid-feedback" >
+                        <div *ngIf="f.cui.errors.required">Se requiere un CUI.</div>
+                        <div *ngIf="f.cui.errors.minlength || f.cui.errors.maxlength ">El CUI debe tener 14 caracteres como longitud.</div>
+                    </div>
+                </div>
+                <div class="col-10">
+                    <label class="form-label">Usuario</label>
+                    <input formControlName="username" class="form-control" type="text" placeholder="Ingrese usuario" [ngClass]="{ 'is-invalid': submitted && f.username.errors}">
+                    <div *ngIf="submitted && f.username.errors" class="invalid-feedback" >
+                        <div *ngIf="f.username.errors.required">Se requiere un nombre de usuario.</div>
+                    </div>
+                </div>
+                <div class="col-10">
+                    <label class="form-label" for="password">Contraseña</label>
+                    <input formControlName="password" class="form-control" type="password" placeholder="Ingrese contraseña" [ngClass]="{ 'is-invalid': submitted && f.password.errors}">
+                    <div *ngIf="submitted && f.password.errors" class="invalid-feedback" >
+                        <div *ngIf="f.password.errors.required">Se requiere una contraseña.</div>
+                        <div *ngIf="f.password.errors.minlength">La contraseña debe tener como mínimo 8 caracteres.</div>
+                    </div>
+                </div>
+                <div class="col-10">
+                    <label class="form-label" for="passValid">Confirmación de contraseña</label>
+                    <input formControlName="passValid" class="form-control" type="password" placeholder="Ingrese de nuevo la contraseña" [ngClass]="{ 'is-invalid': submitted && f.passValid.errors}">
+                    <div *ngIf="submitted && f.passValid.errors" class="invalid-feedback" >
+                        <div *ngIf="f.passValid.errors.required">Debe ingresar de nuevo la contraseña.</div>
+                        <div *ngIf="f.passValid.errors.matching">Las contraseñas no son iguales.</div>
+                    </div>
+                </div>
+                <hr>
+                <button class="btn btn-primary btn-md" type="submit">Aceptar</button>
+            </div>
+        </form>
+    </div>
+</div>
