@@ -1,0 +1,35 @@
+.card {
+    margin-top: 75px;
+    margin-left: 600px;
+    width: 750px;
+}
+
+label, input {
+    margin-left: 50px;
+}
+
+h4 {
+    margin-top: 25px;
+}
+
+hr {
+    margin-top: 50px;
+    margin-left: 35px;
+    width: 650px;
+}
+
+.invalid-feedback {
+    margin-left: 50px;
+}
+
+.btn-primary {
+    margin-left: 35px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    width: 650px;
+    background-color: #1368aa;
+}
+
+.btn-primary:hover {
+    background-color: #033270;
+}
