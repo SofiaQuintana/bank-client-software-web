@@ -6,11 +6,15 @@ import { LogInComponent } from './log-in/log-in.component';
 import { AuthService } from './auth.service';
 import { CreateUserComponent } from './create-user/create-user.component';
 import { UserService } from './user.service';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { FooterComponent } from '../footer/footer.component';
 
 @NgModule({
   declarations: [ 
     LogInComponent,
-    CreateUserComponent
+    CreateUserComponent,
+    ForgotPasswordComponent,
+    FooterComponent
   ],
   imports: [
     CommonModule,
