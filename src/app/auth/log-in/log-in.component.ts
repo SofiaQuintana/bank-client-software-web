@@ -50,4 +50,8 @@ export class LogInComponent {
       this.router.navigate(['/client']);
     }
    }
+
+   redirectToPasswordReset() {
+     this.router.navigate(['/password_reset']);
+   }
 }
