@@ -18,7 +18,7 @@
                             <input id="password" class="form-control" type="password" placeholder="Password" formControlName="password" required>
                         </div>
                         <div>
-                            <button class="fg-button btn btn-link" type="button">forgot password?</button>
+                            <button class="fg-button btn btn-link" type="button" (click)="redirectToPasswordReset()">forgot password?</button>
                         </div>
                         <button class="w-100 btn btn-large btn-primary" type="submit">Sign in</button>
                 </form>
@@ -31,12 +31,5 @@
             </div>
         </div>
     </div>
-    
-    <footer class="footer text-center text-lg-start">
-        <!-- Copyright -->
-        <div class="text-center p-3">
-          © 2021 Copyright: Analisis y diseño 1
-        </div>
-        <!-- Copyright -->
-      </footer>
+    <app-footer></app-footer>
 </body>
