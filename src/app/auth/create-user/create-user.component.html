@@ -8,7 +8,7 @@
                     <input formControlName="cui" class="form-control" type="text" placeholder="Ingrese CUI" [ngClass]="{ 'is-invalid': submitted && f.cui.errors}">
                     <div *ngIf="submitted && f.cui.errors" class="invalid-feedback" >
                         <div *ngIf="f.cui.errors.required">Se requiere un CUI.</div>
-                        <div *ngIf="f.cui.errors.minlength || f.cui.errors.maxlength ">El CUI debe tener 14 caracteres como longitud.</div>
+                        <div *ngIf="f.cui.errors.minlength || f.cui.errors.maxlength ">El CUI debe tener 13 caracteres como longitud.</div>
                     </div>
                 </div>
                 <div class="col-10">
@@ -38,5 +38,14 @@
                 <button class="btn btn-primary btn-md" type="submit">Aceptar</button>
             </div>
         </form>
+        <div *ngIf="success" class="alert alert-success alert-dismissible fade show" role="alert">
+            Cuenta <strong>creada</strong> con éxito! 
+            <button type="button" class="btn-close" (click)="redirectToLogin()" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        <div *ngIf="error" class="alert alert-danger alert-dismissible fade show" role="alert">
+            <h4 class="alert-heading">Error {{serverResponseObject.status}}</h4>
+            {{serverResponseObject.error.information_message}} 
+            <button type="button" class="btn-close" (click)="clearValues()" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
     </div>
 </div>
