@@ -8,13 +8,15 @@ import { CreateUserComponent } from './create-user/create-user.component';
 import { UserService } from './user.service';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { FooterComponent } from '../footer/footer.component';
+import { LogoutComponent } from './logout/logout.component';
 
 @NgModule({
   declarations: [ 
     LogInComponent,
     CreateUserComponent,
     ForgotPasswordComponent,
-    FooterComponent
+    FooterComponent,
+    LogoutComponent
   ],
   imports: [
     CommonModule,

@@ -8,25 +8,49 @@ import { CookieService } from 'ngx-cookie-service';
 export class AuthService {
   //REST authentication services handler
   private isLoggedIn = false;
-
+  //session token
+  private token : string;
   //link to remote server
   private url = 'https://analisis-bank-server.herokuapp.com';
   //Header declaration
   httpOptions = {
     headers : new HttpHeaders({
       'Content-Type': 'application/json',
-      Authorization: 'null',
-      'Access-Control-Allow-Origin': '*' 
+      'Access-Control-Allow-Origin': '*', 
+      'token': 'my-auth-token'
     })
   };
 
   constructor(private cookieService : CookieService, private http : HttpClient) { 
   }
 
+  /**
+   * Executes a post http request for login data 
+   * @param user 
+   * @returns Observable<T>
+   */
   sendLoginData(user : User): Observable<any> {
     return this.http.post<User>(this.url+'/login', JSON.stringify(user), this.httpOptions);
   }
 
+  /**
+   * 1. gets session token stored on cookies
+   * 2. makes a copy of declared headers updating session token to new token
+   * 3. makes a post http request for logout
+   * @returns Observable<T>
+   */
+  logout(): Observable<any> {
+    this.token = this.cookieService.get('TOKEN');
+    this.httpOptions.headers = this.httpOptions.headers.set('token', this.token);
+    return this.http.post<string>(this.url+'/logout','',this.httpOptions);
+  }
+
+  /**
+   * Registers logged, token, username and role cookies
+   * @param role 
+   * @param token 
+   * @param username 
+   */
   registerLogInData(role : number, token : string, username : string) {
     this.cookieService.set('LOGGED', 'true');
     this.cookieService.set('TOKEN', token);
@@ -34,6 +58,10 @@ export class AuthService {
     this.setRole(role);
   }
 
+  /**
+   * Registers a role string value depending on role id
+   * @param role 
+   */
   setRole(role : number) {
     switch(role) {
       case 1: 
@@ -45,6 +73,7 @@ export class AuthService {
     }
   }
 
+  //---------------------------------getters for cookie values----------------------------------
   getRole() : string {
     const role = this.cookieService.get('ROLE');
     return role;
@@ -60,6 +89,14 @@ export class AuthService {
     return username;
   }
 
+  /**
+   * 1. Obtains logged value stored on cookies
+   * 2. if values is true
+   *  2.1 sets a logged true value
+   * 3. if value is false
+   *  3.1 sets a logged false value
+   * @returns boolean
+   */
   isLogged() : boolean {
     const loggedIn = this.cookieService.get('LOGGED');
     if(loggedIn == 'true') {
@@ -69,4 +106,16 @@ export class AuthService {
     }
     return this.isLoggedIn;
   }
+
+  /**
+   * 1. Updates logged cookie value to false
+   * 2. Deletes any other cookie value stored
+   */
+  clearCookies() {
+    this.cookieService.set('LOGGED', 'false');
+    this.cookieService.delete('USERNAME');
+    this.cookieService.delete('TOKEN');
+    this.cookieService.delete('ROLE');
+  }
+
 }
