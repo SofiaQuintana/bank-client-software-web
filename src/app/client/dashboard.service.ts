@@ -23,10 +23,6 @@ export class DashboardService {
    };
 
   constructor(private cookieService : CookieService, private http : HttpClient) { 
-    //Se obtiene el token almacenado
-    this.token = cookieService.get('TOKEN');
-    //Se realiza una copia que contiene los cambios incluidos en el token de autorizacion
-    this.httpOptions.headers = this.httpOptions.headers.set('token', this.token);
   }
 
   /**
@@ -35,6 +31,10 @@ export class DashboardService {
    * @returns Observable (http response result)
    */
   getServices() : Observable<any> {
+    //Se obtiene el token almacenado
+    this.token = this.cookieService.get('TOKEN');
+    //Se realiza una copia que contiene los cambios incluidos en el token de autorizacion
+    this.httpOptions.headers = this.httpOptions.headers.set('token', this.token);
     return this.http.get<Service>(this.url + '/active', this.httpOptions);
   }
 
