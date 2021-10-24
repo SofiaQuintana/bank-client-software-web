@@ -7,21 +7,25 @@ import { AccountRequestComponent } from './account-request/account-request.compo
 import { AccountStatusComponent } from './account-status/account-status.component';
 import { AccountService } from './account.service';
 import { DashboardService } from './dashboard.service';
+import { ReactiveFormsModule } from '@angular/forms';
+import { RequestService } from './request.service';
 
 
 @NgModule({
   declarations: [
     ClientDashboardComponent,
     AccountRequestComponent,
-    AccountStatusComponent
+    AccountStatusComponent,
   ],
   imports: [
     CommonModule,
+    ReactiveFormsModule,
     ClientRoutingModule
   ], 
   providers: [
     DashboardService,
-    AccountService
+    AccountService,
+    RequestService
   ]
 })
 export class ClientModule { }
