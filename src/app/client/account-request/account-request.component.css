@@ -1,0 +1,27 @@
+.card {
+    margin-top: 150px;
+    margin-left: 600px;
+    margin-bottom: 200px;
+    width: 750px;
+}
+
+h4, label {
+    margin-top: 25px;
+}
+
+select {
+    margin-top: 10px;
+    width: 705px;
+}
+
+.btn-primary {
+    margin-top: 35px;
+    margin-bottom: 25px;
+    margin-left: 10px;
+    background-color: #1368aa;
+    width: 705px;
+}
+
+.btn-primary:hover {
+    background-color: #033270;
+}
