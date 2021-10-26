@@ -71,19 +71,16 @@
                         <div class="col p-4 d-flex flex-column position-static">
                             <h4 class="d-inline-block mb-2 text"> {{ service.type }}</h4>
                             <h5 class="d-inline-block mb-2 text text-id"> {{ service.id }}000000000000 </h5>
-                            <div *ngIf="setHiddenValue(service.type)" role="group">
+                            <div role="group">
                                 <h5 class="d-inline-block mb-2 text-id"> {{ service.balance}} </h5>
                                 <strong class="d-inline-block mb-2 text text-muted"> /SALDO </strong>
-                            </div>
-                            <div [hidden]="setHiddenValue(service.type)" role="group">
-                                <strong class="d-inline-block mb-2 text-muted"> SALDO NO DISPONIBLE </strong>
                             </div>
                             <div class="btn-toolbar mb-2 mb-md-0">
                                 <div class="btn-group me-2">
                                   <a class="btn btn-lg btn-right btn-outline-secondary" role="button">
                                       <img class="feather feather-home icon-conf" src="/assets/img/view.png" aria-hidden="true">
                                   </a>
-                                  <button type="button" class="btn btn-lg text btn-outline-secondary">Estado</button>
+                                  <button type="button" class="btn btn-lg text btn-outline-secondary" (click)="onClick(service.id,service.type)">Estado</button>
                                 </div>
                             </div>
                         </div>
