@@ -1,5 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { DashboardService } from '../dashboard.service';
 
 @Component({
@@ -11,7 +12,7 @@ export class ClientDashboardComponent implements OnInit {
   
   data : any = [];
 
-  constructor(private dashboardService : DashboardService) { }
+  constructor(private dashboardService : DashboardService, private router : Router) { }
 
   ngOnInit(): void {
     this.dashboardService.getServices().subscribe(
@@ -25,14 +26,14 @@ export class ClientDashboardComponent implements OnInit {
     )
   }
 
-  setHiddenValue(type : string) : boolean {
+  onClick(serviceId : number, type : string) {
     switch(type) {
-      case "Cuenta bancaria":
-        return true; 
+      case "Cuenta de ahorro": case "Cuenta monetaria":
+        this.router.navigate(['/client/account_statement',serviceId]);
+      break;
       case "Tarjeta de debito":
-        return false;
+      break;
       default:
-        return false;
     }
   }
 
