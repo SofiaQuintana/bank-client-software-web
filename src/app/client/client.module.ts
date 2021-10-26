@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
+import { NgxPaginationModule } from 'ngx-pagination';
 import { ClientRoutingModule } from './client-routing.module';
 import { ClientDashboardComponent } from './client-dashboard/client-dashboard.component';
 import { AccountRequestComponent } from './account-request/account-request.component';
@@ -22,7 +22,8 @@ import { CreditCardRequestComponent } from './credit-card-request/credit-card-re
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    ClientRoutingModule
+    ClientRoutingModule,
+    NgxPaginationModule
   ], 
   providers: [
     DashboardService,
