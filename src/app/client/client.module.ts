@@ -9,6 +9,7 @@ import { AccountService } from './account.service';
 import { DashboardService } from './dashboard.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RequestService } from './request.service';
+import { CreditCardRequestComponent } from './credit-card-request/credit-card-request.component';
 
 
 @NgModule({
@@ -16,6 +17,7 @@ import { RequestService } from './request.service';
     ClientDashboardComponent,
     AccountRequestComponent,
     AccountStatusComponent,
+    CreditCardRequestComponent,
   ],
   imports: [
     CommonModule,
