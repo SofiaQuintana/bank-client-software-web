@@ -1,0 +1,35 @@
+<div class="card">
+    <div class="card-body">
+        <h4 class="mb-3 text-center">Solicitud de tarjeta de crédito</h4>
+        <form class="needs-validation" [formGroup]="requestForm" (ngSubmit)="onSubmit()" novalidate="">
+            <div class="row g-3">
+                <div class="col-10">
+                    <label for="form-label">Ingreso monetario mensual</label>
+                    <input formControlName="monthlyIncome" class="form-control" type="number" placeholder="Ingrese su salario mensual" [ngClass]="{ 'is-invalid': submitted && f.monthlyIncome.errors}">
+                    <div *ngIf="submitted && f.monthlyIncome.errors" class="invalid-feedback" >
+                        <div *ngIf="f.monthlyIncome.errors.required">Se requiere de un ingreso monetario mensual.</div>
+                    </div>
+                </div>
+                <div class="col-10">
+                    <label class="form-label">Límite crediticio deseado</label>
+                    <input formControlName="desiredAmount" class="form-control" type="number" placeholder="Ingrese el límite crediticio deseado" [ngClass]="{ 'is-invalid': submitted && f.desiredAmount.errors}">
+                    <div *ngIf="submitted && f.desiredAmount.errors" class="invalid-feedback" >
+                        <div *ngIf="f.desiredAmount.errors.required">Se requiere de un límite crediticio.</div>
+                    </div>
+                </div>
+                <hr>
+                <button class="btn btn-primary btn-md" type="submit">Aceptar</button>
+            </div>
+        </form>
+        <div *ngIf="isSuccess" class="alert alert-success alert-dismissible fade show" role="alert">
+            Solicitud de <strong>tarjeta de crédito</strong> enviada con éxito! 
+            Por favor, espere a que sea autorizada o denegada su solicitud.
+            <button type="button" class="btn-close" (click)="redirectToDashboard()" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        <div *ngIf="isError" class="alert alert-danger alert-dismissible fade show" role="alert">
+            <h4 class="alert-heading">Error {{serverResponseObject.status}}</h4>
+            {{serverResponseObject.error.information_message}} 
+            <button type="button" class="btn-close" (click)="cleanForm()" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    </div>
+</div>
