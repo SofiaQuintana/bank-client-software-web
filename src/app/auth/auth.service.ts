@@ -66,10 +66,13 @@ export class AuthService {
     switch(role) {
       case 1: 
         this.cookieService.set('ROLE', 'cliente');
-        break;
+      break;
       case 2:
         this.cookieService.set('ROLE', 'cajero');
-        break;
+      break;
+      case 4:
+        this.cookieService.set('ROLE', 'administrador');
+      break;
     }
   }
 
