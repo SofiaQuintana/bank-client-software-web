@@ -1,7 +1,8 @@
+import { CONTENT_ATTR } from '@angular/compiler';
 import { Route } from '@angular/compiler/src/core';
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, CanActivateChild, CanDeactivate, CanLoad, Router, RouterStateSnapshot, UrlSegment, UrlTree } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { AuthService } from './auth.service';
 
 @Injectable({
@@ -40,6 +41,19 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanDeactivate<u
 
   checkLoggedUser(route : ActivatedRouteSnapshot, url : any) : boolean {  
     if(this.authService.isLogged()) {
+      const role = this.authService.getRole();
+      if(route.data.role && route.data.role.indexOf(role) === -1) {
+        switch(role) {
+          case 'cliente':
+            this.router.navigate(['/client']);
+          break;
+          case 'cajero':
+            this.router.navigate(['/bank_teller']);
+          break;
+        }
+        
+        return false;    
+      }
       return true;
     }
     this.router.navigate(['/login']);

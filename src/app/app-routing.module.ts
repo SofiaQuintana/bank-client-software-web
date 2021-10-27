@@ -7,7 +7,18 @@ const appRoutes: Routes = [
   {
     path: 'client',
     loadChildren: () => import('./client/client.module').then(m => m.ClientModule),
-    canLoad: [AuthGuard]
+    canLoad: [AuthGuard],
+    data: {
+      role: 'cliente'
+    }
+  },
+  {
+    path: 'bank_teller',
+    loadChildren: () => import('./bank-teller/bank-teller.module').then(m => m.BankTellerModule),
+    canLoad: [AuthGuard],
+    data: {
+      role: 'cajero' 
+    }
   }
 ];
 

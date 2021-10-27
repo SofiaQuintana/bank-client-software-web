@@ -48,6 +48,8 @@ export class LogInComponent {
     console.log(role)
     if(role === 'cliente') {
       this.router.navigate(['/client']);
+    } else if(role === 'cajero') {
+      this.router.navigate(['/bank_teller']);
     }
    }
 
