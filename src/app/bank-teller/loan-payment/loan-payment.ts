@@ -1,4 +1,6 @@
-export interface LoanPayment{
-    id_loan: number,
-    amount: number
+export class LoanPayment{
+    constructor(
+        private id_loan: number,
+        private amount: number
+    ){}
 }
