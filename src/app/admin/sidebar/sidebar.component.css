@@ -1,0 +1,17 @@
+img {
+    height: 24px;
+    width: 24px;
+}
+
+li:hover {
+    background-color: #1368aa;
+}
+
+.border-top:hover {
+    background-color: #7d8597;
+}
+
+#sidebarMenu {
+    height: 845px;
+    position: relative;
+}
