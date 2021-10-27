@@ -23,22 +23,52 @@ export class AdminService {
   constructor(private cookieService : CookieService, private http : HttpClient) { 
   }
 
+  /**
+   * 1. Updates stored token and is assigned to header
+   * 2. Makes an http get request, expecting to get a list of users stored on db
+   * @returns Observable<any>
+   */
   getAllUsers() : Observable<any> {
     this.updateToken();
     return this.http.get<User>(this.url + '/all', this.httpOptions);
   }
 
+  /**
+   * 1. Updates stored token and is assigned to header
+   * 2. Makes an http get request, expecting to get a list of bank users stored on db
+   * @returns Observable<any>
+   */
   getBankUsers() : Observable<any> {
     this.updateToken();
     return this.http.get<User>(this.url+'/bank', this.httpOptions);
   }
 
+  /**
+   * 1. Updates stored token and is assigned to header
+   * 2. Makes an http get request, expecting to get a list of disabled users stored on db
+   * @returns Observable<any>
+   */
+  getDisabledUsers() : Observable<any> {
+    this.updateToken();
+    return this.http.get<User>(this.url+'/denied',this.httpOptions);
+  }
+
+  /**
+   * 1. Creates a json body with username
+   * 2. Updates stored token and is assigned to header
+   * 2. Makes an http put request, expecting to revoke access to sent user
+   * @returns Observable<any>
+   */
   revokeUserAccess(username : string) : Observable<any> {
     let body = {username: username};
     this.updateToken();
     return this.http.put(this.url+'/revoke_access',body, this.httpOptions);
   }
 
+  /**
+   * 1. gets token stored on cookies
+   * 2. sets values into a new header
+   */
   private updateToken() {
     this.token = this.cookieService.get('TOKEN');
     this.httpOptions.headers = this.httpOptions.headers.set('token', this.token);

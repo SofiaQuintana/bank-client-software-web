@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from '../auth/auth.guard';
 import { BankUserListComponent } from './bank-user-list/bank-user-list.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { DisabledUserListComponent } from './disabled-user-list/disabled-user-list.component';
 import { UserListComponent } from './user-list/user-list.component';
 
 const routes: Routes = [
@@ -15,8 +16,8 @@ const routes: Routes = [
         canActivateChild: [AuthGuard],
         children: [
           { path: 'all_users', component: UserListComponent},
-          { path: 'bank_users', component: BankUserListComponent
-        }
+          { path: 'bank_users', component: BankUserListComponent},
+          { path: 'disabled_users', component: DisabledUserListComponent}
         ]
       }
     ]
