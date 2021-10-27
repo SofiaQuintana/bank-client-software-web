@@ -3,12 +3,13 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { CookieService } from 'ngx-cookie-service';
 import { Account } from './account';
+import { Loan } from './loan-statement/loan';
 
 @Injectable()
 export class AccountService {
 
    //link to remote server
-   private url = 'https://analisis-bank-server.herokuapp.com/account';
+   private url = 'https://analisis-bank-server.herokuapp.com';
    private token : string;
 
    //Header declaration
@@ -25,7 +26,13 @@ export class AccountService {
   getAccountInfo(id : number) : Observable<Account> {
     let body = {id_account: id};
     this.updateToken();
-    return this.http.get<Account>(this.url + '/statement', {headers: this.httpOptions.headers, params: body});
+    return this.http.get<Account>(this.url + '/account/statement', {headers: this.httpOptions.headers, params: body});
+  }
+
+  getLoanInfo(id : number) : Observable<Loan> {
+    let body = {id_loan: id};
+    this.updateToken();
+    return this.http.get<Loan>(this.url+'/loan/statement',{headers: this.httpOptions.headers, params: body});
   }
 
   updateToken() {
