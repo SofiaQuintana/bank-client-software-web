@@ -33,6 +33,12 @@ export class AdminService {
     return this.http.get<User>(this.url+'/bank', this.httpOptions);
   }
 
+  revokeUserAccess(username : string) : Observable<any> {
+    let body = {username: username};
+    this.updateToken();
+    return this.http.put(this.url+'/revoke_access',body, this.httpOptions);
+  }
+
   private updateToken() {
     this.token = this.cookieService.get('TOKEN');
     this.httpOptions.headers = this.httpOptions.headers.set('token', this.token);
