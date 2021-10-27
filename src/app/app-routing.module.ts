@@ -19,6 +19,14 @@ const appRoutes: Routes = [
     data: {
       role: 'cajero' 
     }
+  },
+  {
+    path: 'admin',
+    loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule),
+    canLoad: [AuthGuard],
+    data: {
+      role: 'administrador' 
+    }
   }
 ];
 
