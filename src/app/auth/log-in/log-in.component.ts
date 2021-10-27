@@ -43,6 +43,10 @@ export class LogInComponent {
     ); 
    }
 
+   /**
+    * redirects to dashboard based on
+    * user role
+    */
    private goToDashboard() {
     let role = this.loginService.getRole();
     console.log(role)
@@ -50,6 +54,8 @@ export class LogInComponent {
       this.router.navigate(['/client']);
     } else if(role === 'cajero') {
       this.router.navigate(['/bank_teller']);
+    } else if(role === 'administrador') {
+      this.router.navigate(['/admin']);
     }
    }
 
