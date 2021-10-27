@@ -47,3 +47,12 @@
         <pagination-controls (pageChange)="page = $event"></pagination-controls> 
     </div>
 </div>
+<div *ngIf="isSuccess" class="alert alert-success alert-dismissible fade show" role="alert">
+    Se ha deshabilitado el<strong> acceso al sistema </strong> del usuario con éxito!
+    <button type="button" class="btn-close" (click)="cleanFields()" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+<div *ngIf="isError" class="alert alert-danger alert-dismissible fade show" role="alert">
+    <h4 class="alert-heading">Error {{serverErrorResponse.status}}</h4>
+    {{serverErrorResponse.error.information_message}} 
+    <button type="button" class="btn-close" (click)="cleanFields()" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>

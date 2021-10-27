@@ -9,8 +9,14 @@ import { AdminService } from '../admin.service';
 })
 export class BankUserListComponent implements OnInit {
 
+  //list of bank users
   users : any = [];
+  //actual page for pagination
   page : any;
+  //
+  isSuccess = false;
+  isError = false;
+  serverErrorResponse : any;
 
   constructor(private adminService : AdminService) { }
 
@@ -29,12 +35,18 @@ export class BankUserListComponent implements OnInit {
   revokeUserSystemAccess(username : string) {
     this.adminService.revokeUserAccess(username).subscribe(
       (response) => {
+        this.isSuccess = true;
         console.log(response);
         },
       (error : HttpErrorResponse) => {
+        this.isError = true;
+        this.serverErrorResponse = error;
         console.error(error.error.information_message);
       }
     )
   }
 
+  cleanFields() {
+    this.isError = this.isSuccess = false;
+  }
 }
