@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { CookieService } from 'ngx-cookie-service';
 import { Account } from './account';
 import { Loan } from './loan-statement/loan';
+import { Card } from './card-statement/card';
 
 @Injectable()
 export class AccountService {
@@ -33,6 +34,12 @@ export class AccountService {
     let body = {id_loan: id};
     this.updateToken();
     return this.http.get<Loan>(this.url+'/loan/statement',{headers: this.httpOptions.headers, params: body});
+  }
+
+  getCardInfo(id : number) : Observable<Card> {
+    let body = {id_card: id};
+    this.updateToken();
+    return this.http.get<Card>(this.url+'/card/statement', {headers: this.httpOptions.headers, params: body});
   }
 
   updateToken() {
