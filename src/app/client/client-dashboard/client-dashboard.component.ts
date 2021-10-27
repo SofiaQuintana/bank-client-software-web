@@ -31,12 +31,12 @@ export class ClientDashboardComponent implements OnInit {
       case "Cuenta de ahorro": case "Cuenta monetaria":
         this.router.navigate(['/client/account_statement',serviceId]);
       break;
-      case "Tarjeta de debito":
+      case "Tarjeta de debito":  case "Tarjeta de credito":
+        this.router.navigate(['/client/card_statement',serviceId]);
       break;
       case "Prestamo bancario":
         this.router.navigate(['/client/loan_statement/',serviceId]);
       break;
-      default:
     }
   }
 
