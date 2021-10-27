@@ -10,6 +10,7 @@ import { DashboardService } from './dashboard.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RequestService } from './request.service';
 import { CreditCardRequestComponent } from './credit-card-request/credit-card-request.component';
+import { LoanStatementComponent } from './loan-statement/loan-statement.component';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import { CreditCardRequestComponent } from './credit-card-request/credit-card-re
     AccountRequestComponent,
     AccountStatusComponent,
     CreditCardRequestComponent,
+    LoanStatementComponent,
   ],
   imports: [
     CommonModule,
