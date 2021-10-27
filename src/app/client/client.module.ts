@@ -11,6 +11,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { RequestService } from './request.service';
 import { CreditCardRequestComponent } from './credit-card-request/credit-card-request.component';
 import { LoanStatementComponent } from './loan-statement/loan-statement.component';
+import { CardStatementComponent } from './card-statement/card-statement.component';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { LoanStatementComponent } from './loan-statement/loan-statement.componen
     AccountStatusComponent,
     CreditCardRequestComponent,
     LoanStatementComponent,
+    CardStatementComponent,
   ],
   imports: [
     CommonModule,
