@@ -33,6 +33,9 @@ export class ClientDashboardComponent implements OnInit {
       break;
       case "Tarjeta de debito":
       break;
+      case "Prestamo bancario":
+        this.router.navigate(['/client/loan_statement/',serviceId]);
+      break;
       default:
     }
   }
