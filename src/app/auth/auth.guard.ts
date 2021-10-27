@@ -50,6 +50,8 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanDeactivate<u
           case 'cajero':
             this.router.navigate(['/bank_teller']);
           break;
+          case 'administrador':
+            this.router.navigate(['/admin']);
         }
         
         return false;    
