@@ -7,6 +7,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { BankUserListComponent } from './bank-user-list/bank-user-list.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { DisabledUserListComponent } from './disabled-user-list/disabled-user-list.component';
+import { TransactionListComponent } from './transaction-list/transaction-list.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { DisabledUserListComponent } from './disabled-user-list/disabled-user-li
     SidebarComponent,
     UserListComponent,
     BankUserListComponent,
-    DisabledUserListComponent
+    DisabledUserListComponent,
+    TransactionListComponent
   ],
   imports: [
     CommonModule,
