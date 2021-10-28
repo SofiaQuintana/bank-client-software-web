@@ -1,0 +1,20 @@
+.card {
+    width: 1200px;
+    margin-top: 100px;
+    margin-left: 300px;
+}
+
+img {
+    height: 24px;
+    width: 24px;
+}
+
+.btn-dark {
+    background-color: #1368aa;
+    border-color: #1368aa;
+}
+
+.btn-dark:hover {
+    background-color: #033270;
+    border-color: #033270;
+}
