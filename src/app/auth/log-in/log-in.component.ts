@@ -1,6 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { AbstractControl, FormBuilder } from '@angular/forms';
 import { Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
@@ -13,6 +13,8 @@ import { User } from '../user';
 })
 export class LogInComponent {
 
+  submitted = false;
+  isError = false;
   serverResponseObject : any;
   message : any; 
 
@@ -22,32 +24,47 @@ export class LogInComponent {
    * on real time and both values are required. */
    loginForm = this.formBuilder.group ({
     username : ['', Validators.required],
-    password : ['', Validators.required, Validators.minLength(8)]
+    password : ['', Validators.required]
   }); 
 
   constructor(private formBuilder: FormBuilder, private loginService : AuthService, private router : Router) { }
 
   onSubmit() {
-    let username = this.loginForm.get('username')?.value;
-    let password = this.loginForm.get('password')?.value;
-    this.loginService.sendLoginData({ username, password } as User).subscribe(
-      (response) => { 
-        console.log(response) 
-        this.serverResponseObject = response;
-        this.loginService.registerLogInData(this.serverResponseObject.user_type, this.serverResponseObject.token, this.serverResponseObject.username);
-        this.goToDashboard();
-      },
-      (error : HttpErrorResponse) => { 
-         console.log(error.error.information_message)
-      } 
-    ); 
+    this.submitted = true;
+    if(this.loginForm.invalid) {
+      return;
+    } else {
+      let username = this.f.username.value;
+      let password = this.f.password.value;;
+      this.loginService.sendLoginData({ username, password } as User).subscribe(
+        (response) => { 
+          console.log(response) 
+          this.serverResponseObject = response;
+          this.loginService.registerLogInData(this.serverResponseObject.user_type, this.serverResponseObject.token, this.serverResponseObject.username);
+          this.goToDashboard();
+        },
+        (error : HttpErrorResponse) => { 
+          this.isError = true;
+          this.serverResponseObject = error;
+          console.log(error.error.information_message)
+        } 
+      ); 
+    }
    }
+
+   /**
+   * it helps to obtain form components in an easier way
+   */
+    get f(): { [key: string]: AbstractControl } {
+      return this.loginForm.controls;
+    }
 
    /**
     * redirects to dashboard based on
     * user role
     */
    private goToDashboard() {
+     this.isError = false;
     let role = this.loginService.getRole();
     console.log(role)
     if(role === 'cliente') {
@@ -63,5 +80,10 @@ export class LogInComponent {
 
    redirectToPasswordReset() {
      this.router.navigate(['/password_reset']);
+   }
+
+   cleanForm() {
+     this.isError = this.submitted = false;
+     this.loginForm.reset();
    }
 }

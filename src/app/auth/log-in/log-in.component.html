@@ -7,20 +7,26 @@
         </div>
         <div class="grid-item">
             <div class="form-signin right-card">
-                <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-                    <h1 class="h3 mb-3 fw-normal">Sign in</h1>
+                <form class="needs-validation" [formGroup]="loginForm" (ngSubmit)="onSubmit()" novalidate="">
+                    <h1 class="h3 mb-3 fw-normal">Inicio de sesión</h1>
                         <div>
                             <label class="lbl-pos" for="username">Username</label>
-                            <input id="username" class="form-control" type="text" placeholder="Username" formControlName="username" required>
+                            <input formControlName="username" class="form-control" type="text" placeholder="Username" [ngClass]="{ 'is-invalid': submitted && f.username.errors}">
+                            <div *ngIf="submitted && f.username.errors" class="invalid-feedback" >
+                                <div *ngIf="f.username.errors.required">Se requiere de un usuario.</div>
+                            </div>
                         </div>
                         <div>
                             <label class="lbl-pos" for="password">Password</label>
-                            <input id="password" class="form-control" type="password" placeholder="Password" formControlName="password" required>
+                            <input class="form-control" type="password" placeholder="Password" formControlName="password" [ngClass]="{ 'is-invalid': submitted && f.password.errors}">
+                            <div *ngIf="submitted && f.password.errors" class="invalid-feedback" >
+                                <div *ngIf="f.password.errors.required">Se requiere de una contraseña.</div>
+                            </div>
                         </div>
                         <div>
                             <button class="fg-button btn btn-link" type="button" (click)="redirectToPasswordReset()">forgot password?</button>
                         </div>
-                        <button class="w-100 btn btn-large btn-primary" type="submit">Sign in</button>
+                        <button class="w-100 btn btn-large btn-primary" type="submit">Iniciar sesión</button>
                 </form>
                 <br>
                 <p class="login-callout"> 
@@ -28,8 +34,14 @@
                     <a routerLink="/create" routerLinkActive="active">crea una cuenta</a>
                     .
                 </p>
+                <div *ngIf="isError" class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <h4 class="alert-heading">Error {{serverResponseObject.status}}</h4>
+                    {{serverResponseObject.error.information_message}} 
+                    <button type="button" class="btn-close" (click)="cleanForm()" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
             </div>
         </div>
+        
     </div>
     <app-footer></app-footer>
 </body>
