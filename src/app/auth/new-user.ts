@@ -3,4 +3,5 @@ export interface NewUser {
     password : string;
     user_type : number;
     cui : number;
+    email: string;
 }
