@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { Observable } from 'rxjs';
 import { User } from '../auth/user';
+import { Transaction } from './transaction-list/transaction';
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +11,7 @@ import { User } from '../auth/user';
 export class AdminService {
   //link to remote server
   private url = 'https://analisis-bank-server.herokuapp.com/user';
+  private specialUrl = 'https://analisis-bank-server.herokuapp.com/account';
   private token : string;
 
   //Header declaration
@@ -64,6 +66,12 @@ export class AdminService {
     this.updateToken();
     return this.http.put(this.url+'/revoke_access',body, this.httpOptions);
   }
+
+  getTransactions(username : string) : Observable<any> {
+    let body = {username: username};
+    this.updateToken();
+    return this.http.get<Transaction>(this.specialUrl + '/get_all_transactions_by_an_user', {headers: this.httpOptions.headers, params: body});
+  } 
 
   /**
    * 1. gets token stored on cookies
