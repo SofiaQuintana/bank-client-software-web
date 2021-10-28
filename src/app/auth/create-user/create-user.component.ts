@@ -30,6 +30,7 @@ export class CreateUserComponent implements OnInit {
         Validators.minLength(13),
         Validators.maxLength(13)
       ]],
+      email: ['', Validators.required],
       username: ['', Validators.required],
       password: ['', [
         Validators.required,
@@ -61,6 +62,7 @@ export class CreateUserComponent implements OnInit {
    *    2.2.2 on http error sets error to true and deploys an error alert
    */
   onSubmit() {
+    this.success = this.error = false
     this.submitted = true;
     if(this.createForm.invalid) {
       return;
@@ -68,8 +70,9 @@ export class CreateUserComponent implements OnInit {
       let username = this.f.username.value;
       let password = this.f.password.value;
       let cui = this.f.cui.value;
+      let email = this.f.email.value;
       const user_type = 1;  
-      this.userService.sendNewUserData({username, password, user_type, cui} as NewUser).subscribe(
+      this.userService.sendNewUserData({username, password, user_type, cui, email} as NewUser).subscribe(
         (response) => {
           this.success = true;
           response = this.serverResponseObject;
