@@ -4,14 +4,14 @@ img {
 }
 
 li:hover {
-    background-color: #1368aa;
+    background-color: gainsboro;
 }
 
 .border-top:hover {
-    background-color: #7d8597;
+    background-color: gainsboro;
 }
 
 #sidebarMenu {
-    height: 845px;
+    height: 885px;
     position: relative;
 }
