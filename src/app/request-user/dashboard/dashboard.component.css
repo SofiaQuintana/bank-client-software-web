@@ -1,0 +1,5 @@
+.side {
+    display: flex;
+    flex-grow: grow;
+    background-image: url(../../../assets/img/background-image.png);
+}

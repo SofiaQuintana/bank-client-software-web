@@ -52,8 +52,11 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanDeactivate<u
           break;
           case 'administrador':
             this.router.navigate(['/admin']);
-        }
-        
+          break;
+          case 'solicitudes': 
+            this.router.navigate(['/procedure']);
+          break;
+        }     
         return false;    
       }
       return true;

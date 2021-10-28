@@ -27,6 +27,14 @@ const appRoutes: Routes = [
     data: {
       role: 'administrador' 
     }
+  },
+  {
+    path: 'procedure',
+    loadChildren: () => import('./request-user/request-user.module').then(m => m.RequestUserModule),
+    canLoad: [AuthGuard],
+    data: {
+      role: 'solicitudes' 
+    }
   }
 ];
 

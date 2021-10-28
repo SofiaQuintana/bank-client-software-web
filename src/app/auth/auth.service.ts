@@ -70,6 +70,9 @@ export class AuthService {
       case 2:
         this.cookieService.set('ROLE', 'cajero');
       break;
+      case 3:
+        this.cookieService.set('ROLE', 'solicitudes');
+      break;
       case 4:
         this.cookieService.set('ROLE', 'administrador');
       break;
