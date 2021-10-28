@@ -115,10 +115,7 @@ export class AuthService {
    * 2. Deletes any other cookie value stored
    */
   clearCookies() {
-    this.cookieService.set('LOGGED', 'false');
-    this.cookieService.delete('USERNAME');
-    this.cookieService.delete('TOKEN');
-    this.cookieService.delete('ROLE');
+    this.cookieService.deleteAll();
   }
 
 }
