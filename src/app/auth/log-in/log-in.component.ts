@@ -56,6 +56,8 @@ export class LogInComponent {
       this.router.navigate(['/bank_teller']);
     } else if(role === 'administrador') {
       this.router.navigate(['/admin']);
+    } else if(role === 'solicitudes') {
+      this.router.navigate(['/procedure']);
     }
    }
 
