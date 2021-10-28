@@ -1,4 +1,6 @@
-export interface CreditCardPayment{
-    id_card: number,
-    amount: number
+export class CreditCardPayment{
+    constructor(
+        private id_card: number,
+        private amount: number
+    ){}
 }

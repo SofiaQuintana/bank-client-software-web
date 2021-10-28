@@ -13,8 +13,8 @@
                             </div>
                         </div>
                         <div class="col-10">
-                            <label class="form-label">*Cantidad(Q)</label>
-                            <input formControlName="amount" class="form-control" type="number" min="1" placeholder="Ingrese la cantidad a depositar." [ngClass]="{ 'is-invalid': submitted && f.amount.errors}">
+                            <label class="form-label">*Cantidad</label>
+                            <input formControlName="amount" class="form-control" type="number" min="0" placeholder="Ingrese la cantidad a depositar." [ngClass]="{ 'is-invalid': submitted && f.amount.errors}">
                             <div *ngIf="submitted && f.amount.errors" class="invalid-feedback" >
                                 <div *ngIf="f.amount.errors.required">Cantidad a depositar obligatoria.</div>
                             </div>
@@ -25,7 +25,7 @@
                 </form>
 
                 <div *ngIf="isSuccess" class="alert alert-success alert-dismissible fade show" role="alert">
-                    Deposito realizado con exito.
+                    Deposito realizado exitosamente.
                     <button type="button" class="btn-close" (click)="redirectToDashboard()" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
                 
