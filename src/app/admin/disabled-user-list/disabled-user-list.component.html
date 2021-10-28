@@ -25,9 +25,9 @@
                         <img *ngIf="item.access === false" src="/assets/img/denied.png" > 
                     </td>
                     <td>
-                        <a class="btn btn-outline-dark">
+                        <button class="btn btn-outline-dark" (click)="redirectToTransactionList(item.username)">
                             <img src="/assets/img/transaction-log.png">
-                        </a>
+                        </button>
                     </td>
                 </tr>
             </tbody>

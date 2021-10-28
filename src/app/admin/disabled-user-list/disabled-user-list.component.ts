@@ -1,5 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AdminService } from '../admin.service';
 
 @Component({
@@ -12,7 +13,7 @@ export class DisabledUserListComponent implements OnInit {
   users : any = [];
   page : any;
 
-  constructor(private adminService : AdminService) { }
+  constructor(private adminService : AdminService, private router : Router) { }
 
   ngOnInit(): void {
     this.adminService.getDisabledUsers().subscribe(
@@ -25,5 +26,14 @@ export class DisabledUserListComponent implements OnInit {
       }
     );
   }
+
+  /**
+   * redirects to transaction list of
+   * determinated user
+   * @param username 
+   */
+  redirectToTransactionList(username : string) {
+    this.router.navigate(['/admin/transaction_list/', username]);
+  } 
 
 }
