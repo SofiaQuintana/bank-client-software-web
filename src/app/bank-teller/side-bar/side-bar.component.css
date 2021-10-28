@@ -1,0 +1,21 @@
+img {
+    height: 35px;
+    width: 35px;
+}
+
+li:hover {
+    background-color: gainsboro;
+}
+
+.border-top:hover {
+    background-color: gainsboro;
+}
+
+#sidebarMenu {
+    height: 845px;
+    position: relative;
+}
+
+.sideBarBankTeller{
+    width: 9rem;
+}

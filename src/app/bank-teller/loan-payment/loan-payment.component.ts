@@ -35,6 +35,7 @@ export class LoanPaymentComponent implements OnInit {
   }
 
   onSubmit() {
+    this.isError = this.isSuccess = false
     this.submitted = true;
     if(this.requestForm.invalid) return;
     else {
