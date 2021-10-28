@@ -24,7 +24,7 @@ export class OperationService {
   };
 
   constructor(private cookieService : CookieService, private http : HttpClient) {
-    this.setToken
+    this.setToken()
   }
 
   requestDeposit(deposit: Deposit): Observable<any> {
