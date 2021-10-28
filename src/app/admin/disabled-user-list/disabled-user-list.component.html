@@ -1,0 +1,39 @@
+<div class="card">
+    <div class="card-header">
+        <h5 class="mb-3 text-center">Lista de usuarios sin acceso</h5>
+    </div>
+    <div class="card-body">
+        <!-- Table for user movement data displaying -->
+        <table class="table table-striped table-hover text-center table-responsive">
+            <thead>
+                <tr>
+                    <th scope="col">Usuario</th>
+                    <th scope="col">CUI</th>
+                    <th scope="col">Rol de usuario</th>
+                    <th scope="col">Ultima actualización de datos</th>
+                    <th scope="col">Acceso</th>
+                    <th scope="col">Historial de transacciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of users | paginate: { itemsPerPage: 10, currentPage: page }">
+                    <th scope="row">{{item.username}}</th>
+                    <td> {{item.cui}} </td>
+                    <td> {{item.user_type_description}} </td>
+                    <td> {{item.last_update_date}} </td>
+                    <td>
+                        <img *ngIf="item.access === false" src="/assets/img/denied.png" > 
+                    </td>
+                    <td>
+                        <button class="btn btn-outline-dark" (click)="redirectToTransactionList(item.username)">
+                            <img src="/assets/img/transaction-log.png">
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="card-footer">
+        <pagination-controls (pageChange)="page = $event"></pagination-controls> 
+    </div>
+</div>

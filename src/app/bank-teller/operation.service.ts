@@ -24,27 +24,31 @@ export class OperationService {
   };
 
   constructor(private cookieService : CookieService, private http : HttpClient) {
-    this.setToken();
-   }
-
+    this.setToken
+  }
 
   requestDeposit(deposit: Deposit): Observable<any> {
+    this.setToken
     return this.http.post<Deposit>(this.url + 'account/deposit', JSON.stringify(deposit) ,this.httpOptions)
   }
   
   requestWithdrawal(withdrawal: Withdrawal): Observable<any> {
+    this.setToken
     return this.http.post<Withdrawal>(this.url + 'account/withdrawal', JSON.stringify(withdrawal) ,this.httpOptions);
   }
 
   requestTransfer(transfer: Transfer): Observable<any> {
+    this.setToken
     return this.http.post<Transfer>(this.url + 'account/transfer_on_app', JSON.stringify(transfer) ,this.httpOptions);
   }
   
   requestLoanPayment(payment: LoanPayment): Observable<any> {
+    this.setToken
     return this.http.post<LoanPayment>(this.url + 'loan/payment', JSON.stringify(payment) ,this.httpOptions);
   }
 
   requestCreditCardPayment(payment: CreditCardPayment): Observable<any> {
+    this.setToken
     return this.http.post<CreditCardPayment>(this.url + 'card/credit_payment', JSON.stringify(payment) ,this.httpOptions);
   }
 

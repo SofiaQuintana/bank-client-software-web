@@ -4,13 +4,19 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { AdminRoutingModule } from './admin-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import { BankUserListComponent } from './bank-user-list/bank-user-list.component';
 import { UserListComponent } from './user-list/user-list.component';
+import { DisabledUserListComponent } from './disabled-user-list/disabled-user-list.component';
+import { TransactionListComponent } from './transaction-list/transaction-list.component';
 
 @NgModule({
   declarations: [
     DashboardComponent,
     SidebarComponent,
-    UserListComponent
+    UserListComponent,
+    BankUserListComponent,
+    DisabledUserListComponent,
+    TransactionListComponent
   ],
   imports: [
     CommonModule,

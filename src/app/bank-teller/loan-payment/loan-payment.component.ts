@@ -12,6 +12,10 @@ import { LoanPayment } from './loan-payment';
 })
 export class LoanPaymentComponent implements OnInit {
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 664d9706264f57fb83085f38f580fafb42a9b3b3
   submitted = false;
   isError = false;
   isSuccess = false;
