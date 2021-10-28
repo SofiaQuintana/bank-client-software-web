@@ -1,63 +1,8 @@
-.sidebar {
-    height: 500px;
+.side {
+    display: flex;
+    flex-grow: grow;
+    background-image: url(../../../assets/img/background-image.png);
 }
-
-.icon-conf {
-    width: 24px;
-    height: 24px;
-}
-
-.nav-link-main {
-    display: block;
-    padding: .5rem 1rem;
-    text-decoration: none;
-    font-weight: 500;
-    font-size: larger;
-    color: #1368aa;
-}
-
-.nav-link {
-    font-size: larger;
-    color: #7d8597;
-}
-
-.main-list {
-    display: block;
-    padding: .5rem 1rem;
-}
-
-.text-id {
-    color: #1368aa;
-    font-family: Verdana, sans-serif;
-}
-
-.service {
-    margin: 25px;
-    float: left;
-    width: 700px;
-    height: 250px;
-    text-align: center;
-}
-
-.btn-toolbar {
-    margin-left: 250px;
-    margin-top: 50px;
-}
-
-.btn-right {
-    background-color: #1368aa;
-}
-
-.btn-outline-secondary:hover {
-    background-color: #1368aa;
-    color: white;
-}
-
-.btn-outline-secondary {
-    border-color: #1368aa;
-    color: #1368aa;
-}
-
-.text {
-    font-family: 'Avatgarde', sans-serif;
-}
+/*
+Comentario
+*/

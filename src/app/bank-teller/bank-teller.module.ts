@@ -10,6 +10,7 @@ import { LoanPaymentComponent } from './loan-payment/loan-payment.component';
 import { TransferComponent } from './transfer/transfer.component';
 import { CreditCardPaymentComponent } from './credit-card-payment/credit-card-payment.component';
 import { OperationService } from './operation.service';
+import { SideBarComponent } from './side-bar/side-bar.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { OperationService } from './operation.service';
     WithdrawalComponent,
     LoanPaymentComponent,
     CreditCardPaymentComponent,
-    TransferComponent
+    TransferComponent,
+    SideBarComponent
   ],
   imports: [
     CommonModule,

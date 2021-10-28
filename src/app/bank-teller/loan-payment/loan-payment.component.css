@@ -1,0 +1,15 @@
+.card {
+    padding: 1rem;
+    border: 2px solid #1368aa;
+    width: 890px;
+    margin-top: 200PX;
+    margin-left: 450px;
+}
+
+.blueText{
+    color: #1368aa;    
+}
+
+.redText{
+    color: red
+}

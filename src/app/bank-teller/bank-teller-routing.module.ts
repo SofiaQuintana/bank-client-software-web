@@ -9,12 +9,16 @@ import { TransferComponent } from './transfer/transfer.component';
 import { WithdrawalComponent } from './withdrawal/withdrawal.component';
 
 const routes: Routes = [
-  { path: '', component: DashboardComponent, canActivate: [AuthGuard]},
-  { path: 'deposit', component: DepositComponent, canActivate: [AuthGuard]},
-  { path: 'transfer', component: TransferComponent, canActivate: [AuthGuard]},
-  { path: 'withdrawal', component: WithdrawalComponent, canActivate: [AuthGuard]},
-  { path: 'loan_payment', component: LoanPaymentComponent, canActivate: [AuthGuard]},
-  { path: 'credit_card_payment', component: CreditCardPaymentComponent, canActivate: [AuthGuard]}
+  { path: '', component: DashboardComponent, 
+    canActivate: [AuthGuard],
+    children :[
+      { path: 'deposit', component: DepositComponent, canActivate: [AuthGuard]},
+      { path: 'transfer', component: TransferComponent, canActivate: [AuthGuard]},
+      { path: 'withdrawal', component: WithdrawalComponent, canActivate: [AuthGuard]},
+      { path: 'loan_payment', component: LoanPaymentComponent, canActivate: [AuthGuard]},
+      { path: 'credit_card_payment', component: CreditCardPaymentComponent, canActivate: [AuthGuard]}
+    ]  
+  }
 ];
 
 @NgModule({
